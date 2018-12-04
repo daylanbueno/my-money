@@ -12,7 +12,7 @@ import TabContent from '../common/tab/tabContent'
 import { selectTab,showTabs } from '../common/tab/tabActions'
 
 import List  from '../billingCycle/billingCyclesList'
-
+import Formulario from '../billingCycle/billingCycleForm'
 
 class BillingCycle extends  Component  {
     
@@ -39,7 +39,7 @@ class BillingCycle extends  Component  {
                             </TabContent>
                         
                             <TabContent id='tabCreate'>
-                                <h1>Incluir</h1>
+                                <Formulario/>
                             </TabContent>
                             
                             <TabContent id='tabUpdate'>
