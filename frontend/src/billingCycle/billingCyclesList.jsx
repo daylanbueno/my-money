@@ -23,6 +23,7 @@ export class BillingCycleList extends Component {
                         <i className='fa fa-pencil'></i>
                     </button>
                 </td>
+                
             </tr>
         ))
     }
