@@ -6,27 +6,26 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 
-export class CreditList extends Component {
+export class ItemList extends Component {
 
     add(index, item = {} ) {
         if(!this.props.readOnly) {
-            this.props.arrayInsert('billingCycleForm','credits',index,item)
+            this.props.arrayInsert('billingCycleForm', this.props.field ,index,item)
         }
     }
 
     remove(index, item = {} ) {
         if(!this.props.readOnly && this.props.list.length > 1) {
-            this.props.arrayRemove('billingCycleForm','credits',index,item)
+            this.props.arrayRemove('billingCycleForm', this.props.field ,index,item)
         }
     }
-
 
     rendRows() {
         const list = this.props.list || []
         return list.map((item, index) => (
                 <tr key={index}>
-                    <td><Field name={`credits[${index}].name`} component={Input} placeholder='Informe o nome'  readOnly={this.props.readOnly}/></td>
-                    <td><Field name={`credits[${index}].value`} component={Input} placeholder='Informe o valor'  readOnly={this.props.readOnly}/></td> 
+                    <td><Field name={`${this.props.field}[${index}].name`} component={Input} placeholder='Informe o nome'  readOnly={this.props.readOnly}/></td>
+                    <td><Field name={`${this.props.field}[${index}].value`} component={Input} placeholder='Informe o valor'  readOnly={this.props.readOnly}/></td> 
                     <td>
                         <button type='button' className='btn btn-success' 
                             onClick={() => this.add(index + 1)}>
@@ -52,7 +51,7 @@ export class CreditList extends Component {
             <div>
                 <Grid cols={this.props.cols}>
                     <fieldset>
-                        <legend>Créditos</legend>
+                        <legend>{this.props.legend}</legend>
                         <table className='table'>
                          <thead>
                              <th>Nome</th>
@@ -70,4 +69,4 @@ export class CreditList extends Component {
     }
 }
 const mapDispatchToProps = dispatch => bindActionCreators({arrayInsert,arrayRemove}, dispatch)
-export default connect(null, mapDispatchToProps)(CreditList)
+export default connect(null, mapDispatchToProps)(ItemList)
