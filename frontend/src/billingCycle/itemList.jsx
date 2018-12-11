@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux'
 import If from '../common/operator/if'
 
 
+
+
 export class ItemList extends Component {
 
     add(index, item = {} ) {
@@ -21,12 +23,13 @@ export class ItemList extends Component {
         }
     }
 
+
     rendRows() {
         const list = this.props.list || []
         return list.map((item, index) => (
                 <tr key={index}>
-                    <td><Field name={`${this.props.field}[${index}].name`} component={Input} placeholder='Informe o nome'  readOnly={this.props.readOnly}/></td>
-                    <td><Field name={`${this.props.field}[${index}].value`} component={Input} placeholder='Informe o valor'  readOnly={this.props.readOnly}/></td> 
+                    <td><Field name= {`${this.props.field}[${index}].name`} component={Input} placeholder='Informe o nome'  readOnly={this.props.readOnly}/></td>
+                    <td><Field id="valor" onkeyup={this.formatarMoeda} name={`${this.props.field}[${index}].value`} component={Input} placeholder='Informe o valor'  readOnly={this.props.readOnly}/></td> 
                     <If test={this.props.showStatus} >
                       <td><Field name={`${this.props.field}[${index}].status`} component={Input} placeholder='Informe a situacao'  readOnly={this.props.readOnly}/></td>
                     </If>
