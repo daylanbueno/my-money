@@ -29,7 +29,7 @@ export class ItemList extends Component {
         return list.map((item, index) => (
                 <tr key={index}>
                     <td><Field name= {`${this.props.field}[${index}].name`} component={Input} placeholder='Informe o nome'  readOnly={this.props.readOnly}/></td>
-                    <td><Field id="valor" onkeyup={this.formatarMoeda} name={`${this.props.field}[${index}].value`} component={Input} placeholder='Informe o valor'  readOnly={this.props.readOnly}/></td> 
+                    <td><Field  suffix="$" id="valor" onkeyup={this.formatarMoeda} name={`${this.props.field}[${index}].value`} component={Input} placeholder='Informe o valor'  readOnly={this.props.readOnly}/></td> 
                     <If test={this.props.showStatus} >
                       <td><Field name={`${this.props.field}[${index}].status`} component={Input} placeholder='Informe a situacao'  readOnly={this.props.readOnly}/></td>
                     </If>
