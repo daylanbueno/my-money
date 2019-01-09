@@ -12,7 +12,7 @@ const rootReducers  = combineReducers({
     billingCycle: billingCycleReducer,
     form: formReducer,
     toastr: toastrReducer,
-    auth:AuthReducer
+    auth: AuthReducer
 })
 
 export default rootReducers

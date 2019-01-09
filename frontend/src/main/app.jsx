@@ -9,12 +9,12 @@ import Messages from '../common/msg/menssages'
 
 export default props => (
     <div className='wrapper'>
-        <Header/>
-        <SideBar/>
+        <Header />
+        <SideBar />
         <div className='content-wrapper'>
-            <Routes/>
-         </div>
-        <Footer/>
-        <Messages/>
+            {props.children}
+        </div>
+        <Footer />
+        <Messages />
     </div>
 )

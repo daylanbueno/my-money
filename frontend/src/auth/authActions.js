@@ -1,4 +1,4 @@
-import { toaster } from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr'
 import axios from 'axios'
 import consts from '../consts'
 
@@ -18,7 +18,7 @@ export function validateToken(token) {
     return dispatch => {
         if (token) {
             axios.post(`${consts.OAPI_URL}/validateToken`, { token })
-                .then(resp => {
+               .then(resp => {
                     dispatch({ type: 'TOKEN_VALIDATED', payload: resp.data.valid })
                 })
                 .catch(e => dispatch({ type: 'TOKEN_VALIDATED', payload: false }))
@@ -29,17 +29,17 @@ export function validateToken(token) {
 }
 
 function submit(values, url) {
+    console.log('Bem submit')
     return dispatch => {
         axios.post(url, values)
             .then(resp => {
                 dispatch([
                     { type: 'USER_FETCHED', payload: resp.data }
                 ])
-                    .catch(e => {
-                        e.response.data.errors.forEach(
-                            error => toastr.error('Erro', error)
-                        )
-                    })
+            })
+            .catch(e => {
+                console.log("deu ruim")
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
             })
     }
 }

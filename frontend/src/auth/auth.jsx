@@ -9,18 +9,22 @@ import Grid from '../common/layout/grid'
 import If from '../common/operator/if'
 import Messages from '../common/msg/menssages'
 import Input from '../common/form/inputAuth'
+
 class Auth extends Component {
     constructor(props) {
         super(props)
         this.state = { loginMode: true }
     }
+
     changeMode() {
         this.setState({ loginMode: !this.state.loginMode })
     }
+
     onSubmit(values) {
         const { login, signup } = this.props
         this.state.loginMode ? login(values) : signup(values)
     }
+
     render() {
         const { loginMode } = this.state
         const { handleSubmit } = this.props
@@ -52,8 +56,8 @@ class Auth extends Component {
                         {loginMode ? 'Novo usuário? Registrar aqui!' :
                             'Já é cadastrado? Entrar aqui!'}
                     </a>
-                </div>
                 <Messages />
+                </div>
             </div>
         )
     }
