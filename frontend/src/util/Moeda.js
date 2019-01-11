@@ -1,12 +1,14 @@
 
+import { createNumberMask, createTextMask } from 'redux-form-input-masks';
+
+export const currencyMask = createNumberMask({
+  prefix: 'R$ ',
+  decimalPlaces: 2,
+  locale: 'pt-BR',
+})
+
 export function formatar(valor) {
-    var valor = valor;
-    valor = valor + '';
-    valor = parseInt(valor.replace(/[\D]+/g,''));
-    valor = valor + '';
-    valor = valor.replace(/([0-9]{2})$/g, ",$1");
-    if (valor.length > 6) {
-      valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-    }
-    return valor;
+  valor = parseFloat(valor.replace("R$",""))
+  var formatado =  valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  return formatado;
 }
